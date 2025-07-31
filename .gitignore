@@ -1,0 +1,30 @@
+# 编译输出
+/dist
+# 依赖安装目录
+/node_modules/
+# 日志文件
+*.log
+# 临时文件
+*.tmp
+# 交换文件
+*.swp
+# 备份文件
+*.bak
+# 压缩文件
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.Z
+*.tar.z
+*.tar.lz
+*.tar.lzma
+*.tar.lzo
+*.tar.lz4
+*.tar.zst
+*.tar.zopfli
+*.tar.br
+*.tar.zstd

@@ -1,0 +1,21 @@
+.flying-item {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  animation: flyToCart 0.8s cubic-bezier(0.5, 0, 0.5, 1) forwards;
+}
+
+@keyframes flyToCart {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    /* 使用CSS变量动态计算飞向购物车按钮的位置 */
+    transform: scale(0.1) translate(calc(var(--end-x) * 1), calc(var(--end-y) * 1));
+    opacity: 0;
+  }
+}
