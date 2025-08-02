@@ -83,11 +83,11 @@ const ProfilePage = () => {
   // 获取订单状态标签
   const getStatusTag = (status) => {
     const statusMap = {
-      'PENDING': { color: 'blue', text: '待处理' },
-      'PROCESSING': { color: 'orange', text: '处理中' },
-      'SHIPPED': { color: 'purple', text: '已发货' },
-      'DELIVERED': { color: 'green', text: '已送达' },
-      'CANCELLED': { color: 'red', text: '已取消' },
+      'pending': { color: 'blue', text: '待处理' },
+      'processing': { color: 'orange', text: '处理中' },
+      'shipped': { color: 'purple', text: '已发货' },
+      'delivered': { color: 'green', text: '已送达' },
+      'cancelled': { color: 'red', text: '已取消' },
     };
     
     const statusInfo = statusMap[status] || { color: 'default', text: status };
@@ -145,7 +145,7 @@ const ProfilePage = () => {
                           >
                             查看详情
                           </Button>,
-                          order.status === 'PENDING' && (
+                          order.status === 'pending' && (
                             <Button 
                               type="link" 
                               danger 

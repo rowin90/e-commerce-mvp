@@ -36,7 +36,7 @@ export class Product extends Model {
     type: DataType.STRING(500),
     allowNull: true,
   })
-  imageUrl: string;
+  image: string;
 
   @Column({
     type: DataType.STRING(100),
@@ -50,6 +50,13 @@ export class Product extends Model {
     defaultValue: 0,
   })
   stock: number;
+
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
+  })
+  isActive: boolean;
 
   // 关联关系
   @HasMany(() => OrderItem)

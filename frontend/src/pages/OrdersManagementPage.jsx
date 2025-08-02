@@ -73,11 +73,11 @@ const OrdersManagementPage = () => {
   // 获取状态标签颜色
   const getStatusColor = (status) => {
     const statusColors = {
-      PENDING: 'gold',
-      PROCESSING: 'blue',
-      SHIPPED: 'cyan',
-      DELIVERED: 'green',
-      CANCELLED: 'red',
+      pending: 'gold',
+      processing: 'blue',
+      shipped: 'cyan',
+      delivered: 'green',
+      cancelled: 'red',
     };
     return statusColors[status] || 'default';
   };
@@ -85,11 +85,11 @@ const OrdersManagementPage = () => {
   // 获取状态中文名称
   const getStatusText = (status) => {
     const statusTexts = {
-      PENDING: '待处理',
-      PROCESSING: '处理中',
-      SHIPPED: '已发货',
-      DELIVERED: '已送达',
-      CANCELLED: '已取消',
+      pending: '待处理',
+      processing: '处理中',
+      shipped: '已发货',
+      delivered: '已送达',
+      cancelled: '已取消',
     };
     return statusTexts[status] || status;
   };
@@ -165,7 +165,7 @@ const OrdersManagementPage = () => {
             icon={<EditOutlined />}
             onClick={() => showStatusUpdateModal(record)}
             size="small"
-            disabled={record.status === 'CANCELLED' || record.status === 'DELIVERED'}
+            disabled={record.status === 'cancelled' || record.status === 'delivered'}
           >
             更新状态
           </Button>
@@ -314,11 +314,11 @@ const OrdersManagementPage = () => {
             onChange={setSelectedStatus}
             style={{ width: 200 }}
           >
-            <Option value="PENDING">待处理</Option>
-            <Option value="PROCESSING">处理中</Option>
-            <Option value="SHIPPED">已发货</Option>
-            <Option value="DELIVERED">已送达</Option>
-            <Option value="CANCELLED">已取消</Option>
+            <Option value="pending">待处理</Option>
+            <Option value="processing">处理中</Option>
+            <Option value="shipped">已发货</Option>
+            <Option value="delivered">已送达</Option>
+            <Option value="cancelled">已取消</Option>
           </Select>
         </div>
       </Modal>

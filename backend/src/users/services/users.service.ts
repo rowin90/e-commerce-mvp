@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import * as bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
 import { User } from '../models/user.model';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
@@ -41,6 +41,17 @@ export class UsersService {
     return user;
   }
 
+  // 通过邮箱查找用户
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.userModel.findOne({
+      where: { email },
+    });
+    if (!user) {
+      throw new NotFoundException(`User with email ${email} not found`);
+    }
+    return user;
+  }
+
   // 创建用户
   async create(createUserDto: CreateUserDto): Promise<User> {
     // 检查用户名是否已存在
@@ -60,7 +71,7 @@ export class UsersService {
     }
 
     // 加密密码
-    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+    const hashedPassword = this.hashPassword(createUserDto.password);
 
     // 创建用户
     const user = await this.userModel.create({
@@ -108,9 +119,16 @@ export class UsersService {
     }
 
     // 加密新密码
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    const hashedPassword = this.hashPassword(newPassword);
     
     // 更新密码
     await user.update({ password: hashedPassword });
+  }
+
+  // 密码加密
+  private hashPassword(password: string): string {
+    const salt = crypto.randomBytes(32).toString('hex');
+    const hash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+    return `${salt}:${hash}`;
   }
 }

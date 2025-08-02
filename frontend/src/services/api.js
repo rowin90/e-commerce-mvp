@@ -28,11 +28,17 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // 清除本地存储的认证信息
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      // 可以在这里添加重定向到登录页面的逻辑
-      window.location.href = '/login';
+      // 检查是否是登录或注册接口的401错误，如果是则不自动重定向
+      const isAuthEndpoint = error.config?.url?.includes('/auth/login') || 
+                            error.config?.url?.includes('/auth/register');
+      
+      if (!isAuthEndpoint) {
+        // 清除本地存储的认证信息
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        // 重定向到登录页面
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }
