@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.simple
+    container_name: ecommerce_backend_simple
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - JWT_SECRET=your_jwt_secret_key_for_development
+      - DB_DIALECT=sqlite
+      - DB_STORAGE=./database.sqlite
+    volumes:
+      - ./backend/database.sqlite:/app/database.sqlite
+    networks:
+      - ecommerce_network
+
+volumes:
+  backend_data:
+    driver: local
+
+networks:
+  ecommerce_network:
+    driver: bridge
