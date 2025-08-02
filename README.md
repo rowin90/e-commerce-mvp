@@ -2,6 +2,10 @@
 
 一个基于 React + NestJS 的电商 MVP 项目，使用 pnpm monorepo 管理。
 
+# 账号
+管理员：admin admin123
+用户：test pwd123
+
 ## 项目结构
 
 ```

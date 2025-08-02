@@ -56,9 +56,7 @@ export const fetchProducts = async () => {
 
 export const updateProductStock = async (id, newStock) => {
   try {
-    const product = await api.get(`/products/${id}`);
-    const updatedProduct = { ...product.data, stock: newStock };
-    const response = await api.put(`/products/${id}`, updatedProduct);
+    const response = await api.patch(`/products/${id}`, { stock: newStock });
     return response.data;
   } catch (error) {
     console.error('Error updating product stock:', error);
@@ -68,12 +66,23 @@ export const updateProductStock = async (id, newStock) => {
 
 export const toggleProductActive = async (id) => {
   try {
+    // 先获取当前商品状态
     const product = await api.get(`/products/${id}`);
-    const updatedProduct = { ...product.data, isActive: !product.data.isActive };
-    const response = await api.put(`/products/${id}`, updatedProduct);
+    // 只传递需要更新的字段
+    const response = await api.patch(`/products/${id}`, { isActive: !product.data.isActive });
     return response.data;
   } catch (error) {
     console.error('Error toggling product status:', error);
+    throw error;
+  }
+};
+
+export const updateProduct = async (id, productData) => {
+  try {
+    const response = await api.patch(`/products/${id}`, productData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating product:', error);
     throw error;
   }
 };

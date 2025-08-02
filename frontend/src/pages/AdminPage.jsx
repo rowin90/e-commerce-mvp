@@ -22,7 +22,8 @@ import {
   getProducts, 
   updateProductStockAsync, 
   toggleProductStatusAsync, 
-  addProductAsync 
+  addProductAsync,
+  updateProductAsync
 } from '../store/productsSlice';
 
 const { Title } = Typography;
@@ -88,9 +89,15 @@ const AdminPage = () => {
   const handleSubmit = (values) => {
     if (editingProduct) {
       // 编辑现有商品
-      dispatch(updateProductStockAsync({
+      dispatch(updateProductAsync({
         id: editingProduct.id,
-        newStock: values.stock,
+        productData: {
+          name: values.name,
+          price: parseFloat(values.price),
+          description: values.description,
+          image: values.image,
+          stock: values.stock,
+        }
       }))
         .unwrap()
         .then(() => {

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchProducts, updateProductStock, toggleProductActive, addNewProduct } from '../services/api';
+import { fetchProducts, updateProductStock, toggleProductActive, addNewProduct, updateProduct } from '../services/api';
 
 // 异步获取商品数据
 export const getProducts = createAsyncThunk(
@@ -53,6 +53,19 @@ export const addProductAsync = createAsyncThunk(
   }
 );
 
+// 异步更新商品
+export const updateProductAsync = createAsyncThunk(
+  'products/updateProduct',
+  async ({ id, productData }, { rejectWithValue }) => {
+    try {
+      const updatedProduct = await updateProduct(id, productData);
+      return updatedProduct;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState: {
@@ -94,6 +107,14 @@ const productsSlice = createSlice({
       // 添加新商品
       .addCase(addProductAsync.fulfilled, (state, action) => {
         state.items.push(action.payload);
+      })
+      // 更新商品
+      .addCase(updateProductAsync.fulfilled, (state, action) => {
+        const updatedProduct = action.payload;
+        const index = state.items.findIndex(item => item.id === updatedProduct.id);
+        if (index !== -1) {
+          state.items[index] = updatedProduct;
+        }
       });
   },
 });
