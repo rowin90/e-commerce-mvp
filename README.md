@@ -167,13 +167,21 @@ docker-compose up -d
 2. 部署后端到服务器
 3. 部署前端到 CDN 或静态服务器
 
-## 贡献指南
+## 截图
+- 首页
+[首页](/docs/index.png)
 
-1. Fork 项目
-2. 创建功能分支
-3. 提交更改
-4. 推送到分支
-5. 创建 Pull Request
+- 商品列表
+[商品列表](/docs/product.png)
+
+- 个人中心
+[个人中心](/docs/person.png)
+
+- 管理后台
+[管理后台](/docs/admin.png)
+
+- api
+[api](/docs/apiSwagger.png)
 
 ## 许可证
 
