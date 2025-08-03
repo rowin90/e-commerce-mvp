@@ -24,8 +24,11 @@ async function seed() {
     try {
       await usersService.create({
         username: 'admin',
-        email: 'admin@example.com',
+        email: 'admin@ecommerce.com',
         password: 'admin123',
+        fullName: '系统管理员',
+        address: '北京市朝阳区科技园区1号',
+        phone: '13800138000',
         role: 'admin'
       });
       console.log('管理员用户创建成功');
@@ -36,9 +39,12 @@ async function seed() {
     // 创建普通用户
     try {
       await usersService.create({
-        username: 'user1',
-        email: 'user1@example.com',
-        password: 'user123',
+        username: 'testuser',
+        email: 'test@example.com',
+        password: 'test123',
+        fullName: '测试用户',
+        address: '上海市浦东新区张江高科技园区',
+        phone: '13900139000',
         role: 'user'
       });
       console.log('测试用户创建成功');
@@ -46,71 +52,131 @@ async function seed() {
       console.log('测试用户可能已存在');
     }
 
+    // 创建第二个普通用户
+    try {
+      await usersService.create({
+        username: 'customer1',
+        email: 'customer1@example.com',
+        password: 'customer123',
+        fullName: '张三',
+        address: '广州市天河区珠江新城',
+        phone: '13700137000',
+        role: 'user'
+      });
+      console.log('客户用户创建成功');
+    } catch (error) {
+      console.log('客户用户可能已存在');
+    }
+
     // 创建初始产品数据
     const products = [
       {
-        name: 'iPhone 14',
-        description: '苹果最新款智能手机，配备A16仿生芯片，拍照效果出色',
-        price: 6999.00,
-        stock: 50,
-        category: '电子产品',
-        image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400'
-      },
-      {
-        name: 'MacBook Pro',
-        description: '苹果专业级笔记本电脑，M2芯片，适合开发和设计工作',
-        price: 12999.00,
-        stock: 20,
-        category: '电子产品',
-        image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400'
-      },
-      {
-        name: 'AirPods Pro',
-        description: '苹果无线降噪耳机，主动降噪技术，音质出色',
-        price: 1999.00,
-        stock: 100,
-        category: '电子产品',
-        image: 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=400'
-      },
-      {
-        name: 'Nike Air Max',
-        description: '舒适透气运动鞋，适合日常运动和休闲穿着',
-        price: 599.00,
-        stock: 80,
-        category: '服装鞋帽',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400'
-      },
-      {
-        name: 'Adidas运动T恤',
-        description: '纯棉运动T恤，透气舒适，多种颜色可选',
-        price: 199.00,
-        stock: 150,
-        category: '服装鞋帽',
-        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400'
-      },
-      {
-        name: '小米智能手环',
-        description: '智能健康监测手环，支持心率监测、睡眠分析',
-        price: 299.00,
-        stock: 200,
-        category: '电子产品',
-        image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400'
-      },
-      {
-        name: '索尼无线耳机',
-        description: '高品质无线耳机，降噪效果佳，续航时间长',
-        price: 899.00,
-        stock: 60,
-        category: '电子产品',
-        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400'
-      },
-      {
-        name: '联想ThinkPad',
-        description: '商务笔记本电脑，稳定可靠，适合办公使用',
+        name: 'iPhone 15 Pro',
+        description: 'Apple iPhone 15 Pro，搭载A17 Pro芯片，钛金属设计，支持USB-C接口，拍照和视频功能全面升级',
         price: 8999.00,
+        stock: 45,
+        category: '智能手机',
+        image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400',
+        isActive: true
+      },
+      {
+        name: 'MacBook Air M3',
+        description: 'Apple MacBook Air 13英寸，M3芯片，8GB内存，256GB存储，轻薄便携，续航长达18小时',
+        price: 9499.00,
+        stock: 25,
+        category: '笔记本电脑',
+        image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400',
+        isActive: true
+      },
+      {
+        name: 'AirPods Pro 2',
+        description: 'Apple AirPods Pro 第二代，主动降噪，空间音频，MagSafe充电盒，续航长达30小时',
+        price: 1899.00,
+        stock: 80,
+        category: '音频设备',
+        image: 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=400',
+        isActive: true
+      },
+      {
+        name: 'iPad Air 5',
+        description: 'Apple iPad Air 第五代，M1芯片，10.9英寸液视网膜显示屏，支持Apple Pencil 2',
+        price: 4399.00,
+        stock: 35,
+        category: '平板电脑',
+        image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400',
+        isActive: true
+      },
+      {
+        name: 'Apple Watch Series 9',
+        description: 'Apple Watch Series 9，S9芯片，45mm表盘，GPS+蜂窝网络，健康监测功能全面',
+        price: 3199.00,
+        stock: 60,
+        category: '智能穿戴',
+        image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400',
+        isActive: true
+      },
+      {
+        name: 'Samsung Galaxy S24 Ultra',
+        description: 'Samsung Galaxy S24 Ultra，骁龙8 Gen 3芯片，200MP主摄，S Pen手写笔，6.8英寸屏幕',
+        price: 9999.00,
         stock: 30,
-        category: '电子产品',
-        image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400'
+        category: '智能手机',
+        image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400',
+        isActive: true
+      },
+      {
+        name: 'Dell XPS 13',
+        description: 'Dell XPS 13 笔记本电脑，Intel Core i7处理器，16GB内存，512GB SSD，13.4英寸4K显示屏',
+        price: 11999.00,
+        stock: 20,
+        category: '笔记本电脑',
+        image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
+        isActive: true
+      },
+      {
+        name: 'Sony WH-1000XM5',
+        description: 'Sony WH-1000XM5 无线降噪耳机，业界领先的降噪技术，30小时续航，支持LDAC高音质',
+        price: 2399.00,
+        stock: 50,
+        category: '音频设备',
+        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+        isActive: true
+      },
+      {
+        name: 'Nintendo Switch OLED',
+        description: 'Nintendo Switch OLED 游戏机，7英寸OLED屏幕，64GB存储，支持掌机和主机模式',
+        price: 2599.00,
+        stock: 40,
+        category: '游戏设备',
+        image: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400',
+        isActive: true
+      },
+      {
+        name: 'Xiaomi 14 Pro',
+        description: '小米14 Pro，骁龙8 Gen 3芯片，徕卡光学镜头，2K曲面屏，120W快充',
+        price: 4999.00,
+        stock: 55,
+        category: '智能手机',
+        image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400',
+        isActive: true
+      },
+      {
+        name: 'Dyson V15 Detect',
+        description: 'Dyson V15 Detect 无绳吸尘器，激光显尘技术，60分钟续航，智能感应灰尘',
+        price: 4690.00,
+        stock: 25,
+        category: '家用电器',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
+        isActive: true
+      },
+      {
+        name: 'Kindle Oasis',
+        description: 'Amazon Kindle Oasis 电子书阅读器，7英寸屏幕，IPX8防水，25LED背光，支持有声读物',
+        price: 2399.00,
+        stock: 35,
+        category: '电子书阅读器',
+        image: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=400',
+        isActive: true
       }
     ];
 

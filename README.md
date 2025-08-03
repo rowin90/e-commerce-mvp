@@ -57,6 +57,15 @@ pnpm backend:dev    # 启动后端开发服务器
 pnpm frontend:dev   # 启动前端开发服务器
 ```
 
+## 数据库
+```bash
+# 1. 创建数据库表
+npm run db:create
+
+# 2. 初始化示例数据
+npm run seed
+```
+
 ### 生产构建
 ```bash
 # 构建所有项目

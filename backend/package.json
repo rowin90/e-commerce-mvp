@@ -32,6 +32,8 @@
     "mysql:down": "docker-compose -f docker-compose.mysql.yml down",
     "mysql:logs": "docker-compose -f docker-compose.mysql.yml logs -f mysql",
     "mysql:connect": "docker exec -it ecommerce_mysql_simple mysql -u root -p",
+    "db:create": "ts-node -r tsconfig-paths/register src/database/create-tables.ts",
+    "db:create:force": "ts-node -r tsconfig-paths/register src/database/create-tables.ts --force",
     "seed": "ts-node -r tsconfig-paths/register src/database/seed.ts"
   },
   "dependencies": {
