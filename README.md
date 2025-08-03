@@ -191,7 +191,7 @@ docker-compose up -d
 ![管理后台](/docs/admin.png)
 
 - api
-[api](/docs/apiSwagger.png)
+![api](/docs/apiSwagger.png)
 
 ## 许可证
 
