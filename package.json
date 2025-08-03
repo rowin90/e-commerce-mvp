@@ -8,17 +8,27 @@
     "backend"
   ],
   "scripts": {
-    "dev": "concurrently \"pnpm --filter backend dev\" \"pnpm --filter frontend dev\"",
+    "dev": "concurrently \"pnpm run backend:dev:sqlite\" \"pnpm run frontend:dev:3000\"",
+    "dev:mysql": "concurrently \"pnpm run backend:dev:mysql\" \"pnpm run frontend:dev:3000\"",
+    "start": "concurrently \"pnpm run backend:start:sqlite\" \"pnpm run frontend:preview\"",
+    "start:mysql": "concurrently \"pnpm run backend:start:mysql\" \"pnpm run frontend:preview\"",
     "build": "pnpm --filter backend build && pnpm --filter frontend build",
-    "start": "concurrently \"pnpm --filter backend start\" \"pnpm --filter frontend preview\"",
     "install:all": "pnpm install",
     "clean": "pnpm --filter backend clean && pnpm --filter frontend clean",
     "backend:dev": "pnpm --filter backend dev",
+    "backend:dev:sqlite": "cd backend && DB_DIALECT=sqlite DB_STORAGE=./database.sqlite JWT_SECRET=your_jwt_secret_key PORT=3001 pnpm run dev",
+    "backend:dev:mysql": "cd backend && pnpm run mysql:up && sleep 5 && DB_DIALECT=mysql DB_HOST=localhost DB_PORT=3306 DB_USERNAME=root DB_PASSWORD=password DB_DATABASE=ecommerce JWT_SECRET=your_jwt_secret_key PORT=3001 pnpm run dev",
     "backend:build": "pnpm --filter backend build",
     "backend:start": "pnpm --filter backend start",
+    "backend:start:sqlite": "cd backend && DB_DIALECT=sqlite DB_STORAGE=./database.sqlite JWT_SECRET=your_jwt_secret_key PORT=3001 pnpm run start:prod",
+    "backend:start:mysql": "cd backend && pnpm run mysql:up && sleep 5 && DB_DIALECT=mysql DB_HOST=localhost DB_PORT=3306 DB_USERNAME=root DB_PASSWORD=password DB_DATABASE=ecommerce JWT_SECRET=your_jwt_secret_key PORT=3001 pnpm run start:prod",
     "frontend:dev": "pnpm --filter frontend dev",
+    "frontend:dev:3000": "cd frontend && npm run dev -- --port 3000",
     "frontend:build": "pnpm --filter frontend build",
-    "frontend:preview": "pnpm --filter frontend preview"
+    "frontend:preview": "pnpm --filter frontend preview",
+    "mysql:up": "cd backend && pnpm run mysql:up",
+    "mysql:down": "cd backend && pnpm run mysql:down",
+    "mysql:logs": "cd backend && pnpm run mysql:logs"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

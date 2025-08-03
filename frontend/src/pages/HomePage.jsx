@@ -2,6 +2,15 @@ import React from 'react';
 import { Typography, Card, Row, Col, Button } from 'antd';
 import { Link } from 'react-router-dom';
 
+// 导入本地图片
+import qualityImg from '../assets/images/quality.svg';
+import deliveryImg from '../assets/images/delivery.svg';
+import serviceImg from '../assets/images/service.svg';
+import electronicsImg from '../assets/images/electronics.svg';
+import homeImg from '../assets/images/home.svg';
+import fashionImg from '../assets/images/fashion.svg';
+import beautyImg from '../assets/images/beauty.svg';
+
 const { Title, Paragraph } = Typography;
 
 const HomePage = () => {
@@ -23,7 +32,7 @@ const HomePage = () => {
         <Col xs={24} sm={8}>
           <Card
             hoverable
-            cover={<img alt="高品质" src="https://via.placeholder.com/300x200?text=高品质" />}
+            cover={<img alt="高品质" src={qualityImg} />}
           >
             <Card.Meta
               title="高品质商品"
@@ -34,7 +43,7 @@ const HomePage = () => {
         <Col xs={24} sm={8}>
           <Card
             hoverable
-            cover={<img alt="快速配送" src="https://via.placeholder.com/300x200?text=快速配送" />}
+            cover={<img alt="快速配送" src={deliveryImg} />}
           >
             <Card.Meta
               title="快速配送"
@@ -45,7 +54,7 @@ const HomePage = () => {
         <Col xs={24} sm={8}>
           <Card
             hoverable
-            cover={<img alt="优质服务" src="https://via.placeholder.com/300x200?text=优质服务" />}
+            cover={<img alt="优质服务" src={serviceImg} />}
           >
             <Card.Meta
               title="优质服务"
@@ -62,7 +71,7 @@ const HomePage = () => {
             <Card hoverable>
               <div style={{ textAlign: 'center' }}>
                 <img
-                  src="https://via.placeholder.com/100?text=电子产品"
+                  src={electronicsImg}
                   alt="电子产品"
                   style={{ width: '100px', height: '100px', marginBottom: '10px' }}
                 />
@@ -74,7 +83,7 @@ const HomePage = () => {
             <Card hoverable>
               <div style={{ textAlign: 'center' }}>
                 <img
-                  src="https://via.placeholder.com/100?text=家居用品"
+                  src={homeImg}
                   alt="家居用品"
                   style={{ width: '100px', height: '100px', marginBottom: '10px' }}
                 />
@@ -86,7 +95,7 @@ const HomePage = () => {
             <Card hoverable>
               <div style={{ textAlign: 'center' }}>
                 <img
-                  src="https://via.placeholder.com/100?text=服装鞋包"
+                  src={fashionImg}
                   alt="服装鞋包"
                   style={{ width: '100px', height: '100px', marginBottom: '10px' }}
                 />
@@ -98,7 +107,7 @@ const HomePage = () => {
             <Card hoverable>
               <div style={{ textAlign: 'center' }}>
                 <img
-                  src="https://via.placeholder.com/100?text=美妆护肤"
+                  src={beautyImg}
                   alt="美妆护肤"
                   style={{ width: '100px', height: '100px', marginBottom: '10px' }}
                 />

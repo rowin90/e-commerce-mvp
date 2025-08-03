@@ -3,7 +3,7 @@
 一个基于 React + NestJS 的电商 MVP 项目，使用 pnpm monorepo 管理。
 
 # 账号
-管理员：admin admin123
+管理员：admin admin123  (可管理商品、订单、用户)
 用户：test pwd123
 
 ## 项目结构
@@ -30,7 +30,7 @@ e-commerce-mvp/
 - NestJS
 - TypeScript
 - Sequelize ORM
-- PostgreSQL
+- Sqlite
 - JWT 认证
 
 ## 快速开始
@@ -38,7 +38,7 @@ e-commerce-mvp/
 ### 环境要求
 - Node.js >= 16
 - pnpm >= 8
-- PostgreSQL
+- Sqlite
 
 ### 安装依赖
 ```bash
@@ -65,6 +65,66 @@ pnpm build
 pnpm backend:build
 pnpm frontend:build
 ```
+
+
+### 开发环境启动
+
+在项目根目录运行以下命令之一：
+
+（MySQL镜像没拉好，演示推荐用Sqlite）
+
+```bash
+# 使用 SQLite 数据库启动开发环境（推荐）
+pnpm run dev
+
+# 使用 MySQL 数据库启动开发环境
+pnpm run dev:mysql
+```
+
+### 生产环境启动
+
+```bash
+# 使用 SQLite 数据库启动生产环境
+pnpm run start
+
+# 使用 MySQL 数据库启动生产环境
+pnpm run start:mysql
+```
+
+## 服务端口配置
+
+- **前端**: http://localhost:3000
+- **后端**: http://localhost:3001
+
+## 可用脚本说明
+
+### 主要启动脚本
+
+| 脚本 | 说明 |
+|------|------|
+| `pnpm run dev` | 同时启动前后端开发服务器（SQLite） |
+| `pnpm run dev:mysql` | 同时启动前后端开发服务器（MySQL） |
+| `pnpm run start` | 同时启动前后端生产服务器（SQLite） |
+| `pnpm run start:mysql` | 同时启动前后端生产服务器（MySQL） |
+
+
+## 环境变量
+
+### SQLite 配置（默认）
+- `DB_DIALECT=sqlite`
+- `DB_STORAGE=./database.sqlite`
+- `JWT_SECRET=your_jwt_secret_key`
+- `PORT=3001`
+
+### MySQL 配置
+- `DB_DIALECT=mysql`
+- `DB_HOST=localhost`
+- `DB_PORT=3306`
+- `DB_USERNAME=root`
+- `DB_PASSWORD=password`
+- `DB_DATABASE=ecommerce`
+- `JWT_SECRET=your_jwt_secret_key`
+- `PORT=3001`
 
 ### 生产启动
 ```bash

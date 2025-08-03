@@ -1,0 +1,27 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fashionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa8c16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#eb2f96;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 衣架 -->
+  <line x1="30" y1="25" x2="70" y2="25" stroke="#666" stroke-width="3"/>
+  <circle cx="50" cy="20" r="3" fill="#666"/>
+  <!-- 衣服 -->
+  <path d="M 35 25 L 35 35 Q 35 40 40 40 L 60 40 Q 65 40 65 35 L 65 25" fill="url(#fashionGrad)"/>
+  <rect x="40" y="40" width="20" height="30" fill="url(#fashionGrad)"/>
+  <!-- 袖子 -->
+  <ellipse cx="30" cy="45" rx="8" ry="15" fill="url(#fashionGrad)"/>
+  <ellipse cx="70" cy="45" rx="8" ry="15" fill="url(#fashionGrad)"/>
+  <!-- 纽扣 -->
+  <circle cx="50" cy="48" r="1.5" fill="white"/>
+  <circle cx="50" cy="55" r="1.5" fill="white"/>
+  <circle cx="50" cy="62" r="1.5" fill="white"/>
+  <!-- 鞋子 -->
+  <ellipse cx="40" cy="80" rx="12" ry="6" fill="#333"/>
+  <ellipse cx="60" cy="80" rx="12" ry="6" fill="#333"/>
+  <!-- 鞋带 -->
+  <line x1="35" y1="78" x2="45" y2="78" stroke="white" stroke-width="1"/>
+  <line x1="55" y1="78" x2="65" y2="78" stroke="white" stroke-width="1"/>
+</svg>

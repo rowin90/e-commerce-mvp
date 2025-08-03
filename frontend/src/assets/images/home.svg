@@ -1,0 +1,26 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="homeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#52c41a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#13c2c2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 房子屋顶 -->
+  <polygon points="50,20 20,45 80,45" fill="url(#homeGrad)"/>
+  <!-- 房子主体 -->
+  <rect x="25" y="45" width="50" height="35" fill="url(#homeGrad)"/>
+  <!-- 门 -->
+  <rect x="40" y="60" width="20" height="20" fill="white" rx="2"/>
+  <!-- 门把手 -->
+  <circle cx="55" cy="70" r="1.5" fill="#52c41a"/>
+  <!-- 窗户 -->
+  <rect x="30" y="52" width="12" height="10" fill="white" rx="1"/>
+  <rect x="58" y="52" width="12" height="10" fill="white" rx="1"/>
+  <!-- 窗框 -->
+  <line x1="36" y1="52" x2="36" y2="62" stroke="#52c41a" stroke-width="1"/>
+  <line x1="30" y1="57" x2="42" y2="57" stroke="#52c41a" stroke-width="1"/>
+  <line x1="64" y1="52" x2="64" y2="62" stroke="#52c41a" stroke-width="1"/>
+  <line x1="58" y1="57" x2="70" y2="57" stroke="#52c41a" stroke-width="1"/>
+  <!-- 烟囱 -->
+  <rect x="60" y="25" width="8" height="15" fill="#666"/>
+</svg>
