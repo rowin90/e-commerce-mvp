@@ -169,16 +169,16 @@ docker-compose up -d
 
 ## 截图
 - 首页
-[首页](/docs/index.png)
+![首页](/docs/index.png)
 
 - 商品列表
-[商品列表](/docs/product.png)
+![商品列表](/docs/product.png)
 
 - 个人中心
-[个人中心](/docs/person.png)
+![个人中心](/docs/person.png)
 
 - 管理后台
-[管理后台](/docs/admin.png)
+![管理后台](/docs/admin.png)
 
 - api
 [api](/docs/apiSwagger.png)
